@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCustomerMessagesTable extends Migration
+class CreateResponseChatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateCustomerMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('customer_messages', function (Blueprint $table) {
+        Schema::create('response_chats', function (Blueprint $table) {
             $table->id();
-            $table->integer('customer_id');
-            $table->datetime('timestamp_utc');
-            $table->text('message_body');
+            $table->unsignedBigInteger('customer_id');
+            $table->text('message');
             $table->timestamps();
+            // $table->foreign('customer_id')->references('customer_id')->on('customer_messages');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateCustomerMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer_messages');
+        Schema::dropIfExists('response_chats');
     }
 }
