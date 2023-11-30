@@ -16,7 +16,9 @@ class CreateResponseChatsTable extends Migration
         Schema::create('response_chats', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('responder_id');
             $table->text('message');
+            $table->timestamp('timestamp_utc')->nullable();
             $table->timestamps();
             // $table->foreign('customer_id')->references('customer_id')->on('customer_messages');
         });

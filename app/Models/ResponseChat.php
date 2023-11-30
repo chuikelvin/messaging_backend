@@ -9,11 +9,10 @@ class ResponseChat extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['customer_id', 'message'];
+    protected $fillable = ['customer_id', 'message', 'timestamp_utc', 'responder_id'];
 
-    // Define the relationship with the User model
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
+    public function customerMessage()
+    {
+        return $this->belongsTo(CustomerMessage::class, 'customer_id', 'customer_id');
+    }
 }
